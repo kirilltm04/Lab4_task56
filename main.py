@@ -37,7 +37,7 @@ backpack = []
 
 dead = False
 
-while dead == False:
+while not dead:
 
     print("\n")
     current_room.get_details()
@@ -68,7 +68,7 @@ while dead == False:
             # Do I have this item?
             if fight_with in backpack:
 
-                if inhabitant.fight(fight_with) == True:
+                if inhabitant.fight(fight_with):
                     # What happens if you win?
                     print("Hooray, you won the fight!")
                     current_room.character = None
