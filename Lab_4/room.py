@@ -3,7 +3,7 @@ class Room:
     def __init__(self, room_name):
         self.name = room_name
         self.description = None
-        self.linked_rooms = {}
+        self.linked_rooms = dict()
         self.character = None
         self.item = None
 
@@ -13,11 +13,14 @@ class Room:
     def set_description(self, room_description):
         self.description = room_description
 
-    def get_description(self):
-        return self.description
-
     def get_name(self):
         return self.name
+
+    def get_character(self):
+        return self.character
+
+    def get_description(self):
+        return self.description
 
     def set_name(self, room_name):
         self.name = room_name
@@ -33,7 +36,6 @@ class Room:
 
     def link_room(self, room_to_link, direction):
         self.linked_rooms[direction] = room_to_link
-        # print( self.name + " linked rooms: " + repr(self.linked_rooms))
 
     def __str__(self):
         ans = self.name
@@ -42,7 +44,7 @@ class Room:
         for direction in self.linked_rooms:
             room = self.linked_rooms[direction]
             ans += "The " + room.get_name() + " is " + direction + "\n"
-        return ans
+        return ans[:-1]
 
     def move(self, direction):
         if direction in self.linked_rooms:

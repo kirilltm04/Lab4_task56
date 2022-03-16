@@ -1,7 +1,7 @@
 class Item:
 
-    def __init__(self, item_name):
-        self.name = item_name
+    def __init__(self, name):
+        self.name = name
         self.description = None
 
     def __str__(self):
@@ -13,8 +13,8 @@ class Item:
     def get_name(self):
         return self.name
 
-    def set_description(self, item_description):
-        self.description = item_description
+    def set_description(self, description):
+        self.description = description
 
     def get_description(self):
         return self.description

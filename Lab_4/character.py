@@ -1,39 +1,30 @@
 class Character:
-
-    # Create a character
-    def __init__(self, char_name, char_description):
-        self.name = char_name
-        self.description = char_description
+    def __init__(self, name, description):
+        self.name = name
+        self.description = description
         self.conversation = None
 
-    # Describe this character
-    def describe(self):
-        print(self.name + " is here!")
-        print(self.description)
+    def __str__(self):
+        ans = self.name + " is here!"
+        ans += "\n" + self.description
+        return ans
 
-    # Set what this character will say when talked to
     def set_conversation(self, conversation):
         self.conversation = conversation
 
-    # Talk to this character
     def talk(self):
         if self.conversation is not None:
             print("[" + self.name + " says]: " + self.conversation)
         else:
             print(self.name + " doesn't want to talk to you")
 
-    # Fight with this character
-    def fight(self, combat_item):
-        print(self.name + " doesn't want to fight with you")
-        return False
-
 
 class Enemy(Character):
     enemies_defeated = 0
 
-    def __init__(self, char_name, char_description):
+    def __init__(self, name, description):
 
-        super().__init__(char_name, char_description)
+        super().__init__(name, description)
         self.weakness = None
 
     def fight(self, combat_item):
@@ -59,17 +50,11 @@ class Enemy(Character):
     def set_defeated(number_defeated):
         Enemy.enemies_defeated = number_defeated
 
-    def steal(self):
-        print("You steal from " + self.name)
-        # How will you decide what this character has to steal?
-
 
 class Friend(Character):
 
-    def __init__(self, char_name, char_description):
-        super().__init__(char_name, char_description)
-        self.feeling = None
+    def __init__(self, name, description):
+        super().__init__(name, description)
 
-    def hug(self):
-        print(self.name + " hugs you back!")
-
+    def __str__(self):
+        return self.name + "is your friend!"

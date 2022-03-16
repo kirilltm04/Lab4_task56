@@ -46,7 +46,7 @@ while not dead:
 
     inhabitant = current_room.get_character()
     if inhabitant is not None:
-        inhabitant.describe()
+        print(inhabitant)
 
     item = current_room.get_item()
     if item is not None:
